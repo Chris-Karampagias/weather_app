@@ -8,6 +8,55 @@
     <script src="./main.js" defer></script>
   </head>
   <body>
-    <img src="//cdn.weatherapi.com/weather/64x64/day/116.png" alt="" />
+    <div class="current-weather-container">
+      <div class="left-container">
+        <div class="detail">
+          <h1 class="desc">Condition</h1>
+          <div class="condition">Partly Cloudy</div>
+        </div>
+        <div class="detail">
+          <h1 class="desc">Temperature</h1>
+          <div class="temperature">22°C</div>
+        </div>
+        <div class="detail">
+          <h1 class="desc">Wind</h1>
+          <div class="wind">15.1kph</div>
+        </div>
+        <div class="detail">
+          <h1 class="desc">Humidity</h1>
+          <div class="humidity">57</div>
+        </div>
+      </div>
+      <form action="">
+        <div>
+          <label for="search">Search for a location</label>
+          <input
+            type="text"
+            id="search"
+            name="search"
+            placeholder="Search for a city or country..."
+          />
+        </div>
+      </form>
+      <div class="right-container">
+        <div class="detail">
+          <h1 class="desc">Name</h1>
+          <div class="city">Athens</div>
+        </div>
+        <div class="detail">
+          <h1 class="desc">Country</h1>
+          <div class="country">Greece</div>
+        </div>
+        <div class="detail">
+          <h1 class="desc">Local Time</h1>
+          <div class="local-time">2023-05-22 10:30</div>
+        </div>
+        <div class="detail">
+          <h1 class="desc">Last Updated</h1>
+          <div class="last-updated">2023-05-22 10:15</div>
+        </div>
+      </div>
+    </div>
+    <div class="forecast-container"></div>
   </body>
 </html>
