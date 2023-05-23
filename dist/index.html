@@ -28,7 +28,7 @@
         </div>
       </div>
       <form action="">
-        <div>
+        <div class="search-container">
           <label for="search">Search for a location</label>
           <input
             type="text"
@@ -36,6 +36,11 @@
             name="search"
             placeholder="Search for a city or country..."
           />
+          <button type="submit">Go!</button>
+          <select name="unitChoice" id="unit">
+            <option value="c">°C</option>
+            <option value="f">°F</option>
+          </select>
         </div>
       </form>
       <div class="right-container">
