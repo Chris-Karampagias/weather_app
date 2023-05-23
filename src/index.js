@@ -1,11 +1,12 @@
 import "./style.css";
+import { displayCurrentWeather } from "./dom";
 
-async function getWeather() {
-  const res = await fetch(
-    "http://api.weatherapi.com/v1/forecast.json?key=c96a9b56719a4aba8d394112231805&q=Greece"
-  );
-  const data = await res.json();
-  console.log(data);
-}
+const form = document.querySelector("form");
+const input = document.querySelector("input");
+const select = document.querySelector("select");
+const searchButton = document.querySelector("button");
 
-getWeather();
+searchButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  displayCurrentWeather(select.value, input.value);
+});
