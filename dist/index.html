@@ -29,6 +29,10 @@
       </div>
       <form action="">
         <div class="search-container">
+          <select name="unitChoice" id="unit">
+            <option value="c">°C</option>
+            <option value="f">°F</option>
+          </select>
           <label for="search">Search for a location</label>
           <input
             type="text"
@@ -37,10 +41,6 @@
             placeholder="Search for a city or country..."
           />
           <button type="submit">Go!</button>
-          <select name="unitChoice" id="unit">
-            <option value="c">°C</option>
-            <option value="f">°F</option>
-          </select>
         </div>
       </form>
       <div class="right-container">
@@ -62,6 +62,37 @@
         </div>
       </div>
     </div>
-    <div class="forecast-container"></div>
+    <div class="forecast-container">
+      <div class="forecast-detail">
+        <img src="//cdn.weatherapi.com/weather/64x64/night/113.png" />
+        <div class="time">09:00</div>
+        <div class="temperature-9">22°C</div>
+      </div>
+      <div class="forecast-detail">
+        <img src="//cdn.weatherapi.com/weather/64x64/night/113.png" />
+        <div class="time">12:00</div>
+        <div class="temperature-12">22°C</div>
+      </div>
+      <div class="forecast-detail">
+        <img src="//cdn.weatherapi.com/weather/64x64/night/113.png" />
+        <div class="time">15:00</div>
+        <div class="temperature-15">22°C</div>
+      </div>
+      <div class="forecast-detail">
+        <img src="//cdn.weatherapi.com/weather/64x64/night/113.png" />
+        <div class="time">18:00</div>
+        <div class="temperature-18">22°C</div>
+      </div>
+      <div class="forecast-detail">
+        <img src="//cdn.weatherapi.com/weather/64x64/night/113.png" />
+        <div class="time">21:00</div>
+        <div class="temperature-21">22°C</div>
+      </div>
+      <div class="forecast-detail">
+        <img src="//cdn.weatherapi.com/weather/64x64/night/113.png" />
+        <div class="time">23:00</div>
+        <div class="temperature-23">22°C</div>
+      </div>
+    </div>
   </body>
 </html>
