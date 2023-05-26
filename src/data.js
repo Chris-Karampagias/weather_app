@@ -7,8 +7,10 @@ async function getCurrentWeather(temp, searchTerm) {
   const data = await res.json();
   const info = data.current;
   const location = data.location;
+  const hour = getLocalTimeHour(location.localtime);
   if (temp == "f") {
     return {
+      image: info.condition.icon,
       condition: info.condition.text,
       temp: info.temp_f,
       wind: info.wind_kph,
@@ -16,10 +18,12 @@ async function getCurrentWeather(temp, searchTerm) {
       city: location.name,
       country: location.country,
       localTime: location.localtime,
+      hour,
       lastUpdated: info.last_updated,
     };
   }
   return {
+    image: info.condition.icon,
     condition: info.condition.text,
     temp: info.temp_c,
     wind: info.wind_kph,
@@ -27,6 +31,7 @@ async function getCurrentWeather(temp, searchTerm) {
     city: location.name,
     country: location.country,
     localTime: location.localtime,
+    hour,
     lastUpdated: info.last_updated,
   };
 }
@@ -71,6 +76,11 @@ async function getWeatherForecast(temp, searchTerm) {
   } catch {
     error.textContent = "Woops! Something went wrong!";
   }
+}
+
+function getLocalTimeHour(localTime) {
+  console.log(localTime.split(" ")[1].split(":")[0]);
+  return localTime.split(" ")[1].split(":")[0];
 }
 
 export { getCurrentWeather, getWeatherForecast };

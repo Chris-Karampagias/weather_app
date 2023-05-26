@@ -1,5 +1,6 @@
 import { getCurrentWeather, getWeatherForecast } from "./data";
 
+const body = document.querySelector("body");
 const condition = document.querySelector(".condition");
 const temperature = document.querySelector(".temperature");
 const wind = document.querySelector(".wind");
@@ -23,6 +24,7 @@ const temp23 = document.querySelector(".temperature-23");
 
 async function displayCurrentWeather(temp, searchTerm) {
   const info = await getCurrentWeather(temp, searchTerm);
+  setBackgroundColor(info.hour);
   condition.textContent = info.condition;
   if (temp == "c") {
     temperature.textContent = info.temp + "°C";
@@ -59,6 +61,18 @@ async function displayWeatherForecast(temp, searchTerm) {
     temp18.textContent = info.temp18 + "°C";
     temp21.textContent = info.temp21 + "°C";
     temp23.textContent = info.temp23 + "°C";
+  }
+}
+
+function setBackgroundColor(hour) {
+  if (hour < 17 && hour >= 8) {
+    body.style.backgroundColor = "rgb(170, 214, 60)";
+  } else if (hour >= 18 && hour <= 21) {
+    body.style.backgroundColor = "rgb(23, 164, 203)";
+  } else if (hour > 21 || hour < 5) {
+    body.style.backgroundColor = "rgb(2, 23, 91)";
+  } else if (hour >= 5 && hour < 8) {
+    body.style.backgroundColor = "rgb(75, 146, 5)";
   }
 }
 
