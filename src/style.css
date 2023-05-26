@@ -10,7 +10,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgb(75, 146, 5);
 }
 html,
 body {
@@ -64,12 +63,17 @@ option {
   box-sizing: border-box;
 }
 
-.search-container button {
+.submit-button {
   border-radius: 25px;
   background-color: white;
   border: none;
   padding: 0 10px;
   cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.submit-button:hover {
+  transform: scale(1.1);
 }
 
 #search {
@@ -79,6 +83,10 @@ option {
   border-radius: 15px;
   background-color: white;
   padding: 0.4rem;
+}
+
+#search:focus {
+  background-color: rgb(212, 212, 212);
 }
 
 #unit {
