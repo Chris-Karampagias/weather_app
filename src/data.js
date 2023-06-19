@@ -2,12 +2,14 @@ const error = document.querySelector(".error");
 
 async function getCurrentWeather(temp, searchTerm) {
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=c96a9b56719a4aba8d394112231805&q=${searchTerm}`
+    `https://api.weatherapi.com/v1/forecast.json?key=c96a9b56719a4aba8d394112231805&q=${searchTerm}`
   );
   const data = await res.json();
   const info = data.current;
   const location = data.location;
-  const hour = getLocalTimeHour(location.localtime);
+  const localtime = getTime(location.localtime);
+  const lastupdated = getTime(info.last_updated);
+  const hours = isolateHours(location.localtime);
   if (temp == "f") {
     return {
       image: info.condition.icon,
@@ -17,9 +19,9 @@ async function getCurrentWeather(temp, searchTerm) {
       humidity: info.humidity,
       city: location.name,
       country: location.country,
-      localTime: location.localtime,
-      hour,
-      lastUpdated: info.last_updated,
+      localTime: localtime,
+      lastUpdated: lastupdated,
+      hour: hours,
     };
   }
   return {
@@ -30,9 +32,9 @@ async function getCurrentWeather(temp, searchTerm) {
     humidity: info.humidity,
     city: location.name,
     country: location.country,
-    localTime: location.localtime,
-    hour,
-    lastUpdated: info.last_updated,
+    localTime: localtime,
+    lastUpdated: lastupdated,
+    hour: hours,
   };
 }
 
@@ -40,7 +42,7 @@ async function getWeatherForecast(temp, searchTerm) {
   try {
     error.textContent = "";
     const res = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=c96a9b56719a4aba8d394112231805&q=${searchTerm}`
+      `https://api.weatherapi.com/v1/forecast.json?key=c96a9b56719a4aba8d394112231805&q=${searchTerm}`
     );
     const data = await res.json();
     const hours = data.forecast.forecastday[0].hour;
@@ -78,9 +80,16 @@ async function getWeatherForecast(temp, searchTerm) {
   }
 }
 
-function getLocalTimeHour(localTime) {
-  console.log(localTime.split(" ")[1].split(":")[0]);
-  return localTime.split(" ")[1].split(":")[0];
+function getTime(obj) {
+  let hour = obj.split(" ")[1];
+  if (hour[0] == "0") {
+    hour.splice(0, 1);
+  }
+  return hour;
+}
+
+function isolateHours(obj) {
+  return obj.split(" ")[1].split(":")[0];
 }
 
 export { getCurrentWeather, getWeatherForecast };
